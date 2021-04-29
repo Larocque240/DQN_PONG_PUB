@@ -1,0 +1,29 @@
+// ***********************************************************************
+//	
+//  Author(s): Brandon M. Larocque
+//	Last Updated: 4/25/2021
+//	
+// 	Intialize Q(s,a) randomly
+//  The Bellman Equation and temporal difference stay same 
+//	In eseence it replace the Q lookup table with a neural network which approxiamtes
+//	a function for Q(s,a) or "Q of state and action"
+//	It then uses back propagation as stochastic gradient descent to update the Q network
+//	which estimates the Q function.
+//	This code implements the use of wrappers in openAIGym which is a layer of code that 
+//	capture raw pixels from the enviroment and processes them before they go into the network.
+//	
+//	Wrappers can also take the actions the coder specifies and transform them before they go into the enviroment.
+//	In Wrapper.py you will see many functions that were common from games of this age such as space invaders.
+//	Maxand(frame)SkipEnv function allows to train the game much faster by skipping frames.
+//	FireResetEnv if the gane need to "fire" to start the game
+//	BufferWrapper tracks the last 4 frames and stacks them into a tensor.
+//	
+//	*My addition: Adding an additional ball to the game to observe how the ai would react.
+//	*Second addition: Was to allow rotation of the paddle to play the game as well, but this ended up breaking the ai.
+//	Simplified Algorithm
+//	1.Intialize Q(s,a) with random paramteres 
+//	2.Interact with the environment to obtain a transition state, action, reward, and state prime (s,a,r,s')
+//	3.Calculate the loss with the equation:(Q(s,a)-r)^2
+//	4.Update Q(s,a) using SGD, minimizing the loss function.
+//	5.We repeat from step 2 until the function is converged.
+// ***********************************************************************
